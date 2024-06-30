@@ -1,7 +1,15 @@
+import { useNavigation } from '@react-navigation/native';
+import { AppNavigatorRoutesProps } from '../../routes/app.routes';
 import { StyleSheet, View, Image, Text, ImageBackground, Touchable, TouchableOpacity } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
 
 export function Home() {
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
+
+  function handleNavigateToPoints() {
+    navigation.navigate('points');
+  }
+
   return (
     <ImageBackground 
       source={require('../../assets/home-background.png')}
@@ -15,7 +23,7 @@ export function Home() {
       </View>
 
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={handleNavigateToPoints}>
           <View style={styles.buttonIcon}>
             <Icon name="arrow-right" color="#FFF" size={24} />
           </View>
